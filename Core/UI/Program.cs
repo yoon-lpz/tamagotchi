@@ -8,7 +8,8 @@ namespace Tamagotchi
     public class Program
     {
         public static void Main() {
-            int auxInt = 0, maxLanguage = 2, menuOption = -1, eatOption = -1, maxOption = 4, maxEatOption = 2;
+            int auxInt = 0, random = 0, maxLanguage = 2, menuOption = -1, eatOption = -1, shopOption = -1, maxOption = 4, maxEatOption = 2, maxShopOption = 2;
+            bool action = true;
             string auxString;
 
             Player user = new Player();
@@ -145,34 +146,129 @@ namespace Tamagotchi
                         break;
                     case 1:
 
-                        if (user.Pet.Emotion == EmotionType.Angry)
+                        random = user.Pet.Emotion == EmotionType.Angry ? new Random().Next(0, 3) : 0;
+
+                        if (random < 2 || !(user.Pet.Emotion is EmotionType.Angry))
                         {
-                            auxInt = new Random().Next(0, 3);
+                            do
+                            {
+                                Console.Write(Messages.MsgMenuEat[user.Language], user.PlayerInventory.SnackList.Length, user.PlayerInventory.MealList.Length);
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                auxString = Console.ReadLine();
+                                Utils.ResetCMDColours();
+
+                                if (Utils.IsNumber(auxString) && Utils.IsBetween(auxString, 0, maxEatOption))
+                                {
+                                    eatOption = int.Parse(auxString);
+
+                                    switch (eatOption)
+                                    {
+                                        case 1:
+                                            if (user.PlayerInventory.SnackList.Length > 0)
+                                            {
+                                                user.Feed(FoodType.Snack);
+                                                user.PlayerInventory.RemoveSnack();
+                                            } else
+                                            {
+                                                Utils.ErrorColours();
+                                                Console.WriteLine(Messages.MsgSnackError[user.Language]);
+                                                Utils.ResetCMDColours();
+                                            }
+                                                break;
+                                        case 2:
+                                            if (user.PlayerInventory.MealList.Length > 0)
+                                            {
+                                                user.Feed(FoodType.Meal);
+                                                user.PlayerInventory.RemoveMeal();
+                                            }
+                                            else
+                                            {
+                                                Utils.ErrorColours();
+                                                Console.WriteLine(Messages.MsgMealError[user.Language]);
+                                                Utils.ResetCMDColours();
+                                            }
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.Clear();
+                                    Utils.ErrorColours();
+                                    Console.WriteLine(Messages.MsgErrorNumber[user.Language], maxEatOption);
+                                    Utils.ResetCMDColours();
+                                }
+                            } while (eatOption < 0 || eatOption > maxEatOption);
+                        } else
+                        {
+                            Utils.ErrorColours();
+                            Console.WriteLine(Messages.MsgAngry[user.Language]);
+                            Utils.ResetCMDColours();
                         }
+                            break; // Eat
+                    case 2:
+
+                        action = user.Pet.PetStat.Energy < 100;
+                        
+                        if (action) user.Sleep();
+                            break; // Sleep
+                    case 3:
+                        if (user.Pet.Emotion is EmotionType.Happy)
+                        {
+                            action = true;
+                        }
+                        else if (user.Pet.Emotion is EmotionType.Angry || user.Pet.Emotion is EmotionType.Sad)
+                        {
+                            random = new Random().Next(0, 3);
+
+                            action = random < 2;
+                        }
+                        else
+                        {
+                            action = false;
+                        }
+
+                        if (action) user.Play();
+                        break; // Play
+                    case 4:
                         do
                         {
-                            Console.WriteLine(Messages.MsgMenuEat[user.Language]);
+                            Console.Write(Messages.MsgShopOptions[user.Language]);
                             Console.ForegroundColor = ConsoleColor.Black;
                             auxString = Console.ReadLine();
                             Utils.ResetCMDColours();
+                            if (Utils.IsNumber(auxString) && Utils.IsBetween(auxString, 0, maxShopOption))
+                            {
+                                shopOption = int.Parse(auxString);
 
-                            if (Utils.IsNumber(auxString) && Utils.IsBetween(auxString, 0, maxEatOption))
-                            {
-                                eatOption = int.Parse(auxString);
-                            } else
-                            {
-                                Console.Clear();
-                                Utils.ErrorColours();
-                                Console.WriteLine(Messages.MsgErrorNumber[user.Language], maxEatOption);
-                                Utils.ResetCMDColours();
+                                switch (shopOption)
+                                {
+                                    case 1:
+                                        user.PlayerInventory.AddSnack();
+                                        break;
+                                    case 2:
+                                        user.PlayerInventory.AddMeal();
+                                        break;
+                                }
                             }
-                        } while (eatOption != 0);
-                        break; // Eat
-                    case 2:
-                        break; // Sleep
-                    case 3:
-                        break; // Play
-                    case 4:
+                            else
+                            {
+                                Utils.ErrorColours();
+                                Console.WriteLine(Messages.MsgErrorNumber[user.Language]);
+                                Utils.ResetCMDColours();
+                                Console.Clear();
+                            }
+                        } while (shopOption < 0 ||  shopOption > maxShopOption);
+                        
+                            break; // Shop
+                    case 5:
+                        action = user.Pet.Emotion is EmotionType.Sick;
+
+                        if (action)
+                        {
+                            user.Pet.Injection();
+                        }
+                        break; // Injection
+                    case 6:
                         Console.Clear();
                         Console.WriteLine(Messages.MsgLanguageOptions);
                         Console.Write(Messages.MsgLanguageSelection);

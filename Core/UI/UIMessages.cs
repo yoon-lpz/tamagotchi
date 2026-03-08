@@ -61,9 +61,9 @@ public class Messages
         ];
 
     public static string[] MsgMenuOptions = [
-        "\t0. Exit\n\t1. Eat\n\t2. Sleep\n\t3. Play\n\t4. Change language\nSelect an option: ",
-        "\t0. Salir\n\t1. Comer\n\t2. Dormir\n\t3. Jugar\n\t4. Cambiar idioma\nSelecciona una opción: ",
-        "\t0. Sortir\n\t1. Menjar\n\t2. Dormir\n\t3. Juagr\n\t4. Canviar idioma\nSelecciona una opció: "
+        "\t0. Exit\n\t1. Eat\n\t2. Sleep\n\t3. Play\n\t4. Shop\n\t5. Injection\n\t6. Change language\nSelect an option: ",
+        "\t0. Salir\n\t1. Comer\n\t2. Dormir\n\t3. Jugar\n\t4. Tienda\n\t5. Inyección\n\t6. Cambiar idioma\nSelecciona una opción: ",
+        "\t0. Sortir\n\t1. Menjar\n\t2. Dormir\n\t3. Juagr\n\t4. Botiga\n\t5. Injecció\n\t6. Canviar idioma\nSelecciona una opció: "
         ];
     public static string[] MsgMenuOptionsError = [
         "\t ⚠️ You must input a number between 0 and {0}.",
@@ -72,9 +72,19 @@ public class Messages
         ];
 
     public static string[] MsgMenuEat = [
-        "\t\t   Eating...   \n0. Cancel\n1. Meal\n2. Snack\nSelect an option: ",
-        "\t\t   Comiendo...   \n0. Cancelar\n1. Comida\n2. Snack\nSelecciona una opción: ",
-        "\t\t   Menjant...   \n0. Cancel·lar\n1. Menjar\n2. Snack\nSelecciona una opció: "
+        "\t\t   Eating...   \nAvailable snacks: {0}\nAvailable meals: {1}\n0. Cancel\n1. Snack\n2. Meal\nSelect an option: ",
+        "\t\t   Comiendo...   \nSnacks disponibles: {0}\nComidas disponibles: {1}\n0. Cancelar\n1. Snack\n2. Comida\nSelecciona una opción: ",
+        "\t\t   Menjant...   \nSnacks disponibles: {0}\nMenjars disponibles: {0}\n0. Cancel·lar\n1. Snack\n2. Menjar\nSelecciona una opció: "
+        ];
+    public static string[] MsgSnackError = [
+        "You don't have any snack left.",
+        "No tienes ningun snack disponible.",
+        "No tens cap snack disponible."
+        ];
+    public static string[] MsgMealError = [
+        "You don't have any meal left.",
+        "No tienes ninguna comida disponible.",
+        "No tens cap menjar disponible."
         ];
 
     public static string[] MsgPlayErrorNoEnergyHunger = [
@@ -93,7 +103,18 @@ public class Messages
         "\t ⚠️ pots jugar amb {0}. Dona-li alguna cosa per menjar."
         ];
 
+    public static string[] MsgShopOptions = [
+        "\t\t Shop \n 0. Exit\n 1. Buy a snack\n 2. Buy a meal\nEnter your option: ",
+        "\t\t Tienda \n 0. Salir\n 1. Snack\n 2. Comida\nSelecciona tu opción: ",
+        "\t\t Botiga \n 0. Sortir\n 1. Snack\n 2. MenjarnSelecciona la teva opció: "
+        ];
+
     public static string[] MsgErrorNumber = ["\t ⚠️ You must input a valid number (0-{0})",
                                            "\t ⚠️ Tienes que introducir un número válido (0-{0})",
                                            "\t ⚠️ Has d'introduïr un número vàlid (0-{0})"];
+    public static string[] MsgAngry = [
+        "😠 Your pet is angry at you!",
+        "😠 ¡Tu mascota está enfadada contigo!",
+        "😠 La teva mascota està enfadada amb tu!"
+        ];
 }

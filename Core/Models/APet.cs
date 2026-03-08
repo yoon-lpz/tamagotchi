@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 
 namespace Tamagotchi.Core.Models
 {
@@ -19,6 +18,12 @@ namespace Tamagotchi.Core.Models
         {
             Name = name;
             Language = language;
+        }
+
+        public void Injection()
+        {
+            PetStat.Health += 50;
+            UpdateEmotion();
         }
 
         protected void UpdateEmotion() {

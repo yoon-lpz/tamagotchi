@@ -13,5 +13,29 @@ namespace Tamagotchi
         {
             PlayerInventory = new Inventory();
         }
+
+        public void Feed(FoodType type)
+        {
+            if (Pet is AAnimal aux)
+            {
+                aux.Eat(type);
+            }
+        }
+
+        public void Play()
+        {
+            if (Pet is AAnimal aux)
+            {
+                aux.Play();
+            }
+        }
+
+        public void Sleep()
+        {
+            if (Pet is AAnimal aux)
+            {
+                aux.Sleep();
+            }
+        }
     }
 }

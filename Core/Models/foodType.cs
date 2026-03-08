@@ -2,8 +2,9 @@
 
 namespace Tamagotchi.Core.Models
 {
-    public class Snack : AFood
+    public enum FoodType
     {
-        public Snack() : base() { }
+        Snack,
+        Meal
     }
 }
