@@ -1,7 +1,4 @@
-﻿using System.Text;
-using System.Threading.Tasks;
-
-namespace Tamagotchi.Core.UI;
+﻿namespace Tamagotchi.Core.UI;
 
 public class Messages
 {
@@ -36,15 +33,57 @@ public class Messages
 
     public static string[] MsgUserNameSelection = ["Input your name: ", "Introduce tu nombre: ", "Introdueix el teu nom: "];
     public static string[] MsgUserNameSelectionError = [
-        "\t The username must contain at least 3 characters. Try again.",
-        "\t El nombre de usuario debe tener al menos 3 caracteres. Inténtalo de nuevo.",
-        "\t El nom d'usuari ha de tenir al menys 3 caracters. Intenta-ho de nou."];
+        "\t ⚠️ The username can't be empty. Try again.",
+        "\t ⚠️ El nombre de usuario no puede estar vacío. Inténtalo de nuevo.",
+        "\t ⚠️ El nom d'usuari no pot estar buit. Intenta-ho de nou."];
 
     public static string[] MsgSelectPet = [
-        "Select a pet",
-        "Selecciona una mascota",
-        "Selecciona una mascota"];
+        " 0. Cat\n 1. Dog\n 2. Chick\nSelect a pet: ",
+        " 0. Gato\n 1. Perro\n 3. Pollo\nSelecciona una mascota: ",
+        " 0. Gat\n 1. God\n 3. Pollet\nSelecciona una mascota"];
     public static string[] MsgSelectPetError = ["\t ⚠️ The pet must be a valid number (0-2)" +
                                            "\t ⚠️ La mascota tiene que ser un número válido (0-2)" +
                                            "\t ⚠️ La mascota ha de ser un número vàlid (0-2)"];
+
+    public static string[] MsgPetNameSelection = ["Name your pet: ", "Ponle un nombre a tu mascota: ", "Posa-li un nom a la teva mascota: "];
+    public static string[] MsgPetNameSelectionError = ["\t ⚠️ The name can't be empty. Try again.", "\t ⚠️ El nombre no puede estar vacío. Inténtalo de nuevo.", "\t ⚠️ El nom no pot estar buit. Intenta-ho de nou."];
+
+    public static string[] MsgPressEnter = [
+        "Press enter.",
+        "Presiona enter.",
+        "Pressiona enter."
+        ];
+
+    public static string[] MsgShowStats = [
+        "    Energy: {0}     Hunger: {1}    Health: {2}    ",
+        "    Energia: {0}    Hambre: {1}    Salud: {2}     ",
+        "    Energia: {0}    Fam: {1}       Salut: {2}     "
+        ];
+
+    public static string[] MsgMenuOptions = [
+        "\t0. Exit\n\t1. Eat\n\t2. Sleep\n\t3. Play\n\t4. Change language\nSelect an option: ",
+        "\t0. Salir\n\t1. Comer\n\t2. Dormir\n\t3. Jugar\n\t4. Cambiar idioma\nSelecciona una opción: ",
+        "\t0. Sortir\n\t1. Menjar\n\t2. Dormir\n\t3. Juagr\n\t4. Canviar idioma\nSelecciona una opció: "
+        ];
+    public static string[] MsgMenuOptionsError = [
+        "\t ⚠️ You must input a number between 0 and {0}.",
+        "\t ⚠️ Tienes que introducir un número entre 0 i {0}.",
+        "\t ⚠️ Has d'introduir un número entre 0 i {0}."
+        ];
+
+    public static string[] MsgPlayErrorNoEnergyHunger = [
+        "\t ⚠️ You can't play with {0}. Give them something to eat and let them sleep.",
+        "\t ⚠️ No puedes jugar con {0}. Dale algo para comer y déjale dormir.",
+        "\t ⚠️ No pots jugar amb {0}. Dona-li alguna cosa per menjar i deixa'l dormir."
+        ];
+    public static string[] MsgPlayErrorNoEnergy = [
+        "\t ⚠️ You can't play with {0}. Let them sleep.",
+        "\t ⚠️ No puedes jugar con {0}. Déjale dormir.",
+        "\t ⚠️ No pots jugar amb {0}. Deixa'l dormir."
+        ];
+    public static string[] MsgPlayErrorNoHunger = [
+        "\t ⚠️ You can't play with {0}. Give them something to eat.",
+        "\t ⚠️ No puedes jugar con {0}. Dale algo para comer.",
+        "\t ⚠️ pots jugar amb {0}. Dona-li alguna cosa per menjar."
+        ];
 }

@@ -12,3 +12,4 @@ C:\Users\isard\Desktop\gitClassroom\Tamagotchi\obj\Debug\net9.0\refint\Tamagotch
 C:\Users\isard\Desktop\gitClassroom\Tamagotchi\obj\Debug\net9.0\Tamagotchi.pdb
 C:\Users\isard\Desktop\gitClassroom\Tamagotchi\obj\Debug\net9.0\Tamagotchi.genruntimeconfig.cache
 C:\Users\isard\Desktop\gitClassroom\Tamagotchi\obj\Debug\net9.0\ref\Tamagotchi.dll
+C:\Users\isard\Desktop\gitClassroom\Tamagotchi\obj\Debug\net9.0\Tamagotchi.sourcelink.json
