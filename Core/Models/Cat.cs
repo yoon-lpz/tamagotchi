@@ -18,9 +18,13 @@ namespace Tamagotchi.Core.Models
             PetColor = ConsoleColor.White;
         }
 
-        public override void Eat()
+        public override void Eat(int type)
         {
-            PetStat.Hunger = PetStat.Hunger > 90 ? 100 : PetStat.Hunger += 10;
+            int nutritionalValue = type == 1 ? 10 : 40;
+
+            PetStat.Hunger = PetStat.Hunger > 100 - nutritionalValue ? 100 : PetStat.Hunger += nutritionalValue;
+
+            if (type == 1) PetStat.Health -= 10;
         }
         public override void Sleep()
         {

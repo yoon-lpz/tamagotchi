@@ -4,9 +4,9 @@ namespace Tamagotchi.Core.Models
 {
     public abstract class AAnimal : APet, IEat, ISleep, IPlay
     {
-        public AAnimal(string name, int language) : base(name, language) { }
+        protected AAnimal(string name, int language) : base(name, language) { }
 
-        public abstract void Eat();
+        public abstract void Eat(int type);
         public abstract void Sleep();
         public abstract void Play();
     }

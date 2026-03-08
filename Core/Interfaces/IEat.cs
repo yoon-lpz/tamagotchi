@@ -4,6 +4,6 @@ namespace Tamagotchi.Core.Interfaces
 {
     public interface IEat
     {
-        void Eat();
+        void Eat(int type);
     }
 }

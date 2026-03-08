@@ -4,10 +4,14 @@ namespace Tamagotchi
 {
     public class Player
     {
-        public string Name { get; set; }
         public int Language { get; set; } = 0;
+        public string Name { get; set; }
         public APet Pet { get; set; }
+        public Inventory PlayerInventory { get; set; }
 
-        // missing inventory
+        public Player()
+        {
+            PlayerInventory = new Inventory();
+        }
     }
 }

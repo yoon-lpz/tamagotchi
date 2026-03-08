@@ -15,10 +15,35 @@ namespace Tamagotchi.Core.Models
         public int Language { get; set; }
         public ConsoleColor PetColor { get; set; }
 
-        public APet(string name, int language)
+        protected APet(string name, int language)
         {
             Name = name;
             Language = language;
+        }
+
+        protected void UpdateEmotion() {
+
+            if (PetStat.Hunger <= 50)
+            {
+                PetStat.Health -= 5;
+                Emotion = EmotionType.Angry;
+                ActualSprite = Sprites[2];
+            }
+
+            if (PetStat.Energy <= 30)
+            {
+                PetStat.Health -= 5;
+                Emotion = EmotionType.Tired;
+                ActualSprite = Sprites[3];
+            }
+
+            if (PetStat.Health <= 20)
+            {
+                Emotion = EmotionType.Sick;
+                ActualSprite = Sprites[4];
+            }
+
+            if (PetStat.Health < 0) PetStat = null;
         }
     }
 }

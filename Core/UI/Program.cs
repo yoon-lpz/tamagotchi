@@ -8,7 +8,7 @@ namespace Tamagotchi
     public class Program
     {
         public static void Main() {
-            int auxInt = 0, maxLanguage = 2, menuOption = -1, maxOption = 4;
+            int auxInt = 0, maxLanguage = 2, menuOption = -1, eatOption = -1, maxOption = 4, maxEatOption = 2;
             string auxString;
 
             Player user = new Player();
@@ -95,7 +95,7 @@ namespace Tamagotchi
                 Console.Write(Messages.MsgPetNameSelection[user.Language]);
                 Console.ForegroundColor = ConsoleColor.Black;
                 auxString = Console.ReadLine();
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Utils.ResetCMDColours();
                 if (String.IsNullOrEmpty(auxString))
                 {
                     Console.Clear();
@@ -122,12 +122,18 @@ namespace Tamagotchi
 
             do
             {
+                Console.Clear();
                 Console.WriteLine(Messages.MsgShowStats[user.Language], user.Pet.PetStat.Energy, user.Pet.PetStat.Energy, user.Pet.PetStat.Health);
                 Console.WriteLine();
+                Console.ForegroundColor = user.Pet.PetColor;
                 Console.WriteLine("\t\t" + user.Pet.ActualSprite);
+                Utils.ResetCMDColours();
                 Console.WriteLine();
                 Console.Write(Messages.MsgMenuOptions[user.Language]);
+                Console.ForegroundColor = ConsoleColor.Black;
                 auxString = Console.ReadLine();
+                Utils.ResetCMDColours();
+                Console.Clear();
 
                 menuOption = Utils.IsNumber(auxString)? int.Parse(auxString) : -1;
 
@@ -138,11 +144,34 @@ namespace Tamagotchi
                         Utils.ResetCMDColours();
                         break;
                     case 1:
-                        break;
+
+                        if (user.Pet.Emotion == EmotionType.Angry)
+                        {
+                            auxInt = new Random().Next(0, 3);
+                        }
+                        do
+                        {
+                            Console.WriteLine(Messages.MsgMenuEat[user.Language]);
+                            Console.ForegroundColor = ConsoleColor.Black;
+                            auxString = Console.ReadLine();
+                            Utils.ResetCMDColours();
+
+                            if (Utils.IsNumber(auxString) && Utils.IsBetween(auxString, 0, maxEatOption))
+                            {
+                                eatOption = int.Parse(auxString);
+                            } else
+                            {
+                                Console.Clear();
+                                Utils.ErrorColours();
+                                Console.WriteLine(Messages.MsgErrorNumber[user.Language], maxEatOption);
+                                Utils.ResetCMDColours();
+                            }
+                        } while (eatOption != 0);
+                        break; // Eat
                     case 2:
-                        break;
+                        break; // Sleep
                     case 3:
-                        break;
+                        break; // Play
                     case 4:
                         Console.Clear();
                         Console.WriteLine(Messages.MsgLanguageOptions);
@@ -157,14 +186,15 @@ namespace Tamagotchi
                             Console.WriteLine(Messages.MsgLanguageError);
                             Utils.ResetCMDColours();
                         }
-                            break;
+                            break; // Language change
                 }
 
-                Utils.SetCMDColours(ConsoleColor.Cyan, ConsoleColor.Cyan);
                 Console.WriteLine(Messages.MsgPressEnter[user.Language]);
+                Utils.SetCMDColours(ConsoleColor.Cyan, ConsoleColor.Cyan);
                 Console.ReadLine();
                 Utils.ResetCMDColours();
                 Console.Clear();
+
             } while (menuOption != 0);
         }
     }

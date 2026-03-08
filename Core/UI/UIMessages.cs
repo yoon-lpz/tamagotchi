@@ -71,6 +71,12 @@ public class Messages
         "\t ⚠️ Has d'introduir un número entre 0 i {0}."
         ];
 
+    public static string[] MsgMenuEat = [
+        "\t\t   Eating...   \n0. Cancel\n1. Meal\n2. Snack\nSelect an option: ",
+        "\t\t   Comiendo...   \n0. Cancelar\n1. Comida\n2. Snack\nSelecciona una opción: ",
+        "\t\t   Menjant...   \n0. Cancel·lar\n1. Menjar\n2. Snack\nSelecciona una opció: "
+        ];
+
     public static string[] MsgPlayErrorNoEnergyHunger = [
         "\t ⚠️ You can't play with {0}. Give them something to eat and let them sleep.",
         "\t ⚠️ No puedes jugar con {0}. Dale algo para comer y déjale dormir.",
@@ -86,4 +92,8 @@ public class Messages
         "\t ⚠️ No puedes jugar con {0}. Dale algo para comer.",
         "\t ⚠️ pots jugar amb {0}. Dona-li alguna cosa per menjar."
         ];
+
+    public static string[] MsgErrorNumber = ["\t ⚠️ You must input a valid number (0-{0})",
+                                           "\t ⚠️ Tienes que introducir un número válido (0-{0})",
+                                           "\t ⚠️ Has d'introduïr un número vàlid (0-{0})"];
 }
